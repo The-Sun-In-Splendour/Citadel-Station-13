@@ -2297,6 +2297,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	value = REAGENT_VALUE_EXCEPTIONAL
 
 /datum/reagent/consumable/ethanol/nuclear_bomb/on_mob_life(mob/living/carbon/M)
+	M.syndieslurring = min(M.syndieslurring + 3, 3)
 	if(M?.mind?.has_antag_datum(/datum/antagonist/traitor || M?.mind?.has_antag_datum(/datum/antagonist/nukeop || M?.mind?.has_antag_datum(/datum/antagonist/brother)))) // heals as much as quintuple sec because TCs are very valuable
 		M.heal_bodypart_damage(2,2,2)
 		M.adjustBruteLoss(-5,0)

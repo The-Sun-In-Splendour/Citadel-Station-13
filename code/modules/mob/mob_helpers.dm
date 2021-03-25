@@ -151,6 +151,49 @@
 
 #define CLOCK_CULT_SLUR(phrase) sanitize(text2ratvar(phrase))
 
+//Syndie Slurring
+/proc/syndieslur(phrase) // Inflicted on those who drunk a Nuclear Bomb
+	phrase = html_decode(phrase)
+	var/leng = length(phrase)
+	. = ""
+	var/newletter = ""
+	var/rawchar = ""
+	for(var/i = 1, i <= leng, i += length(rawchar))
+		rawchar = newletter = phrase[i]
+		if(rand(1, 2) == 2)
+			var/lowerletter = lowertext(newletter)
+			if(lowerletter == "o")
+				newletter = "u"
+			else if(lowerletter == "t")
+				newletter = "ch"
+			else if(lowerletter == "a")
+				newletter = "ah"
+			else if(lowerletter == "u")
+				newletter = "oo"
+			else if(lowerletter == "c")
+				newletter = " Sabotage "
+			else if(lowerletter == "s")
+				newletter = " Steal "
+		if(rand(1, 4) == 4)
+			if(newletter == " ")
+				newletter = " Maroon "
+			else if(newletter == "H")
+				newletter = " Assasinate "
+
+		switch(rand(1, 15))
+			if(1)
+				newletter = " X "
+			if(2)
+				newletter += " Chemicals "
+			if(3)
+				newletter = " Prima "
+			if(4)
+				newletter = " Blue "
+			if(5)
+				newletter = " Zero-G "
+		. += newletter
+	return sanitize(.)
+
 ///Adds stuttering to the message passed in
 /proc/stutter(phrase)
 	phrase = html_decode(phrase)

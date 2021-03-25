@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/obj/item/bodypart/rightarm = get_bodypart(BODY_ZONE_R_ARM)
 	if(HAS_TRAIT(src, TRAIT_MUTE) && get_selected_language() != /datum/language/signlanguage)
 		return 0
-	
+
 	if (get_selected_language() == /datum/language/signlanguage)
 		var/left_disabled = FALSE
 		var/right_disabled = FALSE
@@ -391,6 +391,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(clockcultslurring)
 		message = CLOCK_CULT_SLUR(message)
+
+	if(syndieslurring)
+		message = syndieslur(message)
 
 	message = capitalize(message)
 
