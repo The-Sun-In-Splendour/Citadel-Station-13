@@ -2284,6 +2284,28 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	M.adjustStaminaLoss(-2)
 	return ..()
 
+/datum/reagent/consumable/ethanol/nuclear_bomb
+	name = "Nuclear Bomb"
+	description = "A drink embodying the syndicate."
+	boozepwr = 80
+	color = "#fb2203"
+	quality = DRINK_FANTASTIC
+	taste_description = "nuclear fallout"
+	glass_icon_state = "nuclear_bomb"
+	glass_name = "Nuclear Bomb"
+	glass_desc = "This glass has a tap on the back to drink from, and no matter how much you shake it, there is always a huge layer of powder at the bottom of it."
+	value = REAGENT_VALUE_EXCEPTIONAL
+
+/datum/reagent/consumable/ethanol/nuclear_bomb/on_mob_life(mob/living/carbon/M)
+	if(M?.mind?.has_antag_datum(/datum/antagonist/traitor || M?.mind?.has_antag_datum(/datum/antagonist/nukeop || M?.mind?.has_antag_datum(/datum/antagonist/brother)))) // heals as much as quintuple sec because TCs are very valuable
+		M.heal_bodypart_damage(2,2,2)
+		M.adjustBruteLoss(-5,0)
+		M.adjustOxyLoss(-5,0)
+		M.adjustFireLoss(-5,0)
+		M.adjustToxLoss(-5,0)
+		. = 1
+	return ..()
+
 ////////////////////
 //Race-Base-Drinks//
 ////////////////////

@@ -891,6 +891,14 @@
 	required_reagents = list(/datum/reagent/consumable/ethanol/alliescocktail = 50, /datum/reagent/consumable/ethanol/champagne = 20, /datum/reagent/consumable/doctor_delight = 10, /datum/reagent/consumable/ethanol/quintuple_sec = 10, /datum/reagent/consumable/ethanol/screwdrivercocktail = 10)
 	mix_message = "When your powers combine, I am Captain Pl-..."
 
+/datum/chemical_reaction/nuclear_bomb
+	name = "Nuclear Bomb"
+	id = /datum/reagent/consumable/ethanol/nuclear_bomb
+	results = list(/datum/reagent/consumable/ethanol/nuclear_bomb = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/syndicatebomb = 1, /datum/reagent/telecrystal = 1)
+	mix_message = "The drink emits a loud noise!"
+	mix_sound = 'sound/machines/alarm.ogg'
+
 ////////////////////////////////////////// Tea  Base Drinks //////////////////////////////////////
 
 /datum/chemical_reaction/mush
