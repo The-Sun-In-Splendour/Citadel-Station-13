@@ -158,6 +158,12 @@
 	. = ""
 	var/newletter = ""
 	var/rawchar = ""
+	var/nouns = strings(ION_FILE, "ionabstract")
+	var/objects = strings(ION_FILE, "ionobjects")
+	var/adjectives = strings(ION_FILE, "ionadjectives")
+	var/threats = strings(ION_FILE, "ionthreats")
+	var/foods = strings(ION_FILE, "ionfood")
+	var/drinks = strings(ION_FILE, "iondrinks")
 	for(var/i = 1, i <= leng, i += length(rawchar))
 		rawchar = newletter = phrase[i]
 		if(rand(1, 2) == 2)
@@ -182,15 +188,17 @@
 
 		switch(rand(1, 15))
 			if(1)
-				newletter = " X "
+				newletter = " " + lowertext(pick(drinks))
 			if(2)
-				newletter += " Chemicals "
+				newletter = " " + lowertext(pick(foods))
 			if(3)
-				newletter = " Prima "
+				newletter = " " + lowertext(pick(threats))
 			if(4)
-				newletter = " Blue "
+				newletter = " " + lowertext(pick(nouns))
 			if(5)
-				newletter = " Zero-G "
+				newletter = " " + lowertext(pick(objects))
+			if(6)
+				newletter = " " + lowertext(pick(adjectives))
 		. += newletter
 	return sanitize(.)
 
